@@ -1,9 +1,9 @@
-name: Deploy
+name: Auto Deploy
 
 on:
   push:
     branches:
-    - main
+    - main    
 
 jobs:
   deploy_lambda:
@@ -18,4 +18,9 @@ jobs:
           python -VV
           python -m site
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install boto3
+          python -m pip install -r requirements.txt
+      - name: 'Deploy'
+        run: |
+        # build
+        # zip
+        # aws cli to deploy code
