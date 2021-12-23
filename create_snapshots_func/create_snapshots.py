@@ -2,7 +2,7 @@ from datetime import datetime
 import boto3
 
 def lambda_handler(event, context):
-    print("I'm the new function!")
+    print("I've been deployed from Github!")
     ec2 = boto3.resource('ec2')
 
     # find instances with a tag of 'backup=true'
