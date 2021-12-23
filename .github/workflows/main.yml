@@ -27,5 +27,5 @@ jobs:
           python -m pip install -r requirements.txt         
       - name: 'Deploy'
         run: |
-        zip -j deploy.zip ./create_snapshots_func/*
-        aws lambda update-function-code --function-name=createSnapshots --zip-file=fileb://deploy.zip
+          zip -j deploy.zip ./create_snapshots_func/*
+          aws lambda update-function-code --function-name=createSnapshots --zip-file=fileb://deploy.zip
