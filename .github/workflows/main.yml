@@ -25,7 +25,7 @@ jobs:
           python -m site
           python -m pip install --upgrade pip setuptools wheel
           python -m pip install -r requirements.txt         
+      - name: 'Package'
+        run: zip -j deploy.zip ./create_snapshots_func/*
       - name: 'Deploy'
-        run: |
-          zip -j deploy.zip ./create_snapshots_func/*
-          aws lambda update-function-code --function-name=createSnapshots --zip-file=fileb://deploy.zip
+        run: aws lambda update-function-code --function-name=createSnapshots --zip-file=fileb://deploy.zip
