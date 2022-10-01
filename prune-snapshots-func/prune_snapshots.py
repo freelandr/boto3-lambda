@@ -1,3 +1,5 @@
+""" doc string """
+
 import boto3
 
 def lambda_handler(event, context):
@@ -23,9 +25,10 @@ def lambda_handler(event, context):
                 print(f'Deleting snapshot: {snapshot["SnapshotId"]}')
                 ec2_client.delete_snapshot(SnapshotId=snapshot["SnapshotId"])
             except Exception as e:
-                if 'InvalidSnapshot.InUse' in e.message:
+                if 'InvalidSnapshot.InUse' in str(e):
                     print(f'Snapshot {snapshot["SnapshotId"]} in use, skipping')
                     continue
+
         else:
             # this is the most recent snapshot - retain
             retained_volumes.append(snapshot["VolumeId"])
